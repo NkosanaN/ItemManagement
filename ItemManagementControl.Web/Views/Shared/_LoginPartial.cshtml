@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Identity
+@*
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+*@
+
+@inject SignInManager<ItemManagementControl.Model.ApplicationUser> SignInManager
+@inject UserManager<ItemManagementControl.Model.ApplicationUser> UserManager
+
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a id="manage" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+        </li>
+        <li class="nav-item">
+            @*  <form id="logoutForm" class="form-inline" asp-route-returnUrl="@Url.Action("Logout", "UserAuth")">*@
+            <button onclick="logout()" class="nav-link btn btn-link text-white">Logout</button>
+            @*        </form>*@
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+
+
+
+            <a class="text-white btn btn-secondary " asp-area="Identity" asp-page="/Account/Login" data-bs-toggle="modal" data-bs-target="#UserLoginModal"><i class="fas fa-sign-in-alt "></i>Login</a>
+            <a class="text-white btn btn-secondary " asp-area="Identity" asp-page="/Account/Register" data-bs-toggle="modal" data-bs-target="#UserRegistrationModal"><i class="fas fa-user  "></i>Register</a>
+        </li>
+    }
+</ul>
+
+
+<script type="text/javascript">
+
+    function logout() {
+        console.log("Test");
+        location.href = "/UserAuth/Logout";
+    }
+
+</script>
+

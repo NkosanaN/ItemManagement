@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+
+    <div class="container-fluid">
+        <img src="~/Img/pexels.jpg" alt="contact" class="img" style="position:absolute;height:80%;width:96%;" />
+    </div>
+
+
+
+<div class="modal fade" id="UserLoginModal" tabindex="-1"
+     role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <partial name="_UserLoginPartial" model="new ItemManagementControl.Model.LoginModel{
+            Email = string.Empty,
+            Password = string.Empty,
+            RememberMe = false,
+            LoginFailedMessage = string.Empty,
+            LoginInValid = string.Empty
+        }">
+</div>
+
+<div class="modal fade" id="UserRegistrationModal" tabindex="-1"
+     role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <partial name="_UserRegistrationPartial">
+</div>
+
+
+
+@section Scripts {
+    <script src="~/js/userlogin.js" asp-append-version="true"></script>
+    <script src="~/js/userregistration.js" asp-append-version="true"></script>
+}
